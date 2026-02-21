@@ -1,0 +1,69 @@
+name: Build PhoneClaw APK
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+    inputs:
+      moondream_token:
+        description: 'Moondream API Token (leave empty to use secret)'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Create local.properties
+        run: |
+          mkdir -p ~/.gradle
+          cat > ~/.gradle/gradle.properties << EOF
+          MOONDREAM_AUTH=${{ secrets.MOONDREAM_AUTH || github.event.inputs.moondream_token }}
+          EOF
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Build APK
+        run: |
+          ./gradlew assembleRelease --no-daemon
+
+      - name: Find APK
+        id: apk
+        run: |
+          APK_PATH=$(find . -name "*.apk" -type f | head -1)
+          echo "apk_path=$APK_PATH" >> $GITHUB_OUTPUT
+          echo "APK found at: $APK_PATH"
+
+      - name: Upload APK as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: phoneclaw-apk
+          path: ${{ steps.apk.outputs.apk_path }}
+          retention-days: 30
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ${{ steps.apk.outputs.apk_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print APK Info
+        run: |
+          echo "✅ APK built successfully!"
+          echo "📁 Location: ${{ steps.apk.outputs.apk_path }}"
+          echo "📥 Download from: Actions → build-apk → Artifacts"

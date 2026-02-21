@@ -27,7 +27,8 @@ jobs:
         run: |
           mkdir -p ~/.gradle
           cat > ~/.gradle/gradle.properties << EOF
-          MOONDREAM_AUTH=${{ secrets.MOONDREAM_AUTH || github.event.inputs.moondream_token }}
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          MOONDREAM_AUTH=disabled-using-openai-vision
           EOF
 
       - name: Setup Android SDK

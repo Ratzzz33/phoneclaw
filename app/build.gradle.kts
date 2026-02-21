@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+    // Firebase only for release builds
+    id("com.google.gms.google-services") apply false
 }
 
 android {
@@ -56,9 +57,10 @@ afterEvaluate {
 
 dependencies {
     // Firebase - KEPT
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-    implementation("com.google.firebase:firebase-database-ktx")
-    implementation("com.google.firebase:firebase-storage-ktx")
+    // Firebase disabled for debug builds
+    // implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    // implementation("com.google.firebase:firebase-database-ktx")
+    // implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.code.gson:gson:2.10.1")
     // Core Android
     implementation("androidx.core:core-ktx:1.12.0")
@@ -96,3 +98,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+
+

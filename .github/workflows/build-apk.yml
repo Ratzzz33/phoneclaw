@@ -39,7 +39,7 @@ jobs:
 
       - name: Build APK
         run: |
-          ./gradlew assembleRelease --no-daemon
+          ./gradlew assembleDebug --no-daemon
 
       - name: Find APK
         id: apk

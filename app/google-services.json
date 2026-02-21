@@ -1,12 +1,35 @@
 {
-  "type": "service_account",
-  "project_id": "phoneclaw-build",
-  "private_key_id": "disabled",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCz5o8zs2E8X8x9\nVE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9\nVE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9\nVE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9\nVE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9VE6z5o8zs2E8X8x9\nVE6z5o8zs2E8X8x9VE4EAADA3F87YLgVE4EAADANBgkqhkiG9w0BAQEFAASCBKgw\n-----END PRIVATE KEY-----",
-  "client_email": "phoneclaw@phoneclaw-build.iam.gserviceaccount.com",
-  "client_id": "123456789",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/phoneclaw%40phoneclaw-build.iam.gserviceaccount.com"
+  "project_info": {
+    "project_number": "123456789",
+    "firebase_url": "https://phoneclaw-stub.firebaseio.com",
+    "project_id": "phoneclaw-stub",
+    "storage_bucket": "phoneclaw-stub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123456789:android:abcd1234",
+        "android_client_info": {
+          "package_name": "com.example.universal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123456789-abcdefghijklmnop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABCDEFGHIJKLMNOPQRSTUVWXYZ1234567"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }
